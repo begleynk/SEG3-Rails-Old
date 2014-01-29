@@ -27,6 +27,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+group :development do
+  gem 'guard-rspec', require: false
+end
+
 group :test do 
   gem "cucumber-rails", require: false
   gem "database_cleaner"
