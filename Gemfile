@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   gem 'guard-rspec', require: false
+  gem "rspec-rails"
 end
 
 group :test do 

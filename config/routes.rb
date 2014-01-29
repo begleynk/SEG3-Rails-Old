@@ -1,4 +1,8 @@
 SEG3::Application.routes.draw do
+  root 'questionnaires#index'
+
+  resources :questionnaires
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
