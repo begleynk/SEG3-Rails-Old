@@ -10,6 +10,10 @@ class QuestionnairesController < ApplicationController
   # GET /questionnaires/1
   # GET /questionnaires/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @questionnaire.to_json(:include => :questions)}
+    end
   end
 
   # GET /questionnaires/new

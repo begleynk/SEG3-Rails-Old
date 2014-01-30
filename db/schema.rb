@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129214642) do
+ActiveRecord::Schema.define(version: 20140130160021) do
 
   create_table "questionnaires", force: true do |t|
     t.string   "title"
@@ -19,5 +19,16 @@ ActiveRecord::Schema.define(version: 20140129214642) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "questions", force: true do |t|
+    t.string   "title"
+    t.text     "subtext"
+    t.boolean  "required"
+    t.integer  "questionnaire_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
 
 end
