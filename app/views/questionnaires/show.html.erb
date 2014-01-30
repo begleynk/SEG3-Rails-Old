@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Questionnaire</h1>
+
 <p>
   <strong>Title:</strong>
   <%= @questionnaire.title %>
@@ -9,6 +11,16 @@
   <strong>Description:</strong>
   <%= @questionnaire.description %>
 </p>
+
+<br>
+
+<h3>Questions:</h3>
+
+<% @questionnaire.questions.each do |question| %>
+  <p><strong>Title: </strong><%= question.title %></p>
+  <p><strong>Subtext: </strong><%= question.subtext %></p>
+  <p><strong>Required: </strong><%= question.required %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_questionnaire_path(@questionnaire) %> |
 <%= link_to 'Back', questionnaires_path %>
