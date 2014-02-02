@@ -1,21 +1,40 @@
-<div class='row'>
-  <div class='col-md-12'>
-<!-- Scale question -->
-    <% if question.question_type == "Scale" %>
+
+<%= div_for question do %> 
+  <div class='row'>
+    <div class='col-md-12'>
+
       <p><strong>Title: </strong><%= question.title %></p>
       <p><strong>Subtext: </strong><%= question.subtext %></p>
+    
+      <!-- Scale question -->
+      <% if question.question_type == "Scale" %>
 
-      <form class='form-inline' role='form'>
-        <div class="form-group">
-          <% question.question_options.each do |option| %>
-            <label>
-              <input type="radio" name="radio-<%= question.id %>" value="<%= option.text %>">
-                <%= option.text %>
-              </input>
-            </label>
-          <% end %>
-        </div>
-      </form>
-    <% end %>
+        <form class='form-inline' role='form'>
+          <div class="form-group">
+            <% question.question_options.each do |option| %>
+              <label>
+                <input type="radio" name="radio-<%= question.id %>" value="<%= option.text %>">
+                  <%= option.text %>
+                </input>
+              </label>
+            <% end %>
+          </div>
+        </form>
+      <!-- Free Text question -->
+      <% elsif question.question_type == "Free Text" %>
+
+        <form class='form-inline' role='form'>
+          <div class="form-group">
+              <label>
+                <input type="text">
+              </label>
+          </div>
+        </form>
+      
+      <% end %>
+    
+      <%= link_to "Delete Question", question_path(question), method: :delete, remote: true %>
+    
+    </div>
   </div>
-</div>
+<% end %>

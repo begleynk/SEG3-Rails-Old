@@ -22,9 +22,7 @@
 
 <div id='questions-list'>
   <% @questionnaire.questions.each do |question| %>
-    <%= div_for question do %> 
-      <%= render question %> 
-    <% end %>
+    <%= render question %> 
   <% end %>
 </div>
 

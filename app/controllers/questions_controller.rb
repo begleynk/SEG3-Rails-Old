@@ -10,8 +10,8 @@ class QuestionsController < ApplicationController
     @question.questionnaire_id = params[:questionnaire_id]
 
     @question.save
-    respond_to do |f|
-      f.js
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -24,10 +24,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if @question.destroy
-      render json: @question.to_json, status: :ok
-    else
-      render json: @question.errors.to_json, status: :unprocessable_entity
+    @question.destroy
+
+    respond_to do |format|
+      format.js
     end
   end
 
