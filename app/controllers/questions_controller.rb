@@ -7,10 +7,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save
-      render json: @question.to_json(include: :question_options), status: :ok
-    else
-      render json: @question.errors, status: :unprocessable_entity
+    @question.questionnaire_id = params[:questionnaire_id]
+
+    @question.save
+    respond_to do |f|
+      f.js
     end
   end
 
@@ -18,7 +19,7 @@ class QuestionsController < ApplicationController
     if @question.update
       render json: @question.to_json, status: :ok
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render json: @question.errors.to_json, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +27,7 @@ class QuestionsController < ApplicationController
     if @question.destroy
       render json: @question.to_json, status: :ok
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render json: @question.errors.to_json, status: :unprocessable_entity
     end
   end
 
@@ -37,6 +38,6 @@ class QuestionsController < ApplicationController
     end
     
     def question_params
-      params.require(:question).permit(:title, :subtext, :questionnaire_id, :question_type)
+      params.require(:question).permit(:title, :subtext, :questionnaire_id, :question_type, :required)
     end
 end

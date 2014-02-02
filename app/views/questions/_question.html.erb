@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-md-12'>
+<!-- Scale question -->
+    <% if question.question_type == "Scale" %>
+      <p><strong>Title: </strong><%= question.title %></p>
+      <p><strong>Subtext: </strong><%= question.subtext %></p>
+
+      <form class='form-inline' role='form'>
+        <div class="form-group">
+          <% question.question_options.each do |option| %>
+            <label>
+              <input type="radio" name="radio-<%= question.id %>" value="<%= option.text %>">
+                <%= option.text %>
+              </input>
+            </label>
+          <% end %>
+        </div>
+      </form>
+    <% end %>
+  </div>
+</div>

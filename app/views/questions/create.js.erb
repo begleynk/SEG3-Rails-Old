@@ -1,0 +1,7 @@
+<% if @question.new_record? %>
+  console.log("<%= @question.errors.to_json %>");
+<% else %>
+  console.log("Should have been a success");
+  $("div#questions-list").append("<%= escape_javascript(render @question) %>");
+  $("form#new_question").get(0).reset();
+<% end %>
