@@ -35,14 +35,17 @@ end
 
 group :development do
   gem 'guard-rspec', require: false
-  gem "rspec-rails"
 end
 
 group :test do 
   gem "cucumber-rails", require: false
   gem "database_cleaner"
-  gem "rspec-rails"
   gem "capybara"
+end
+
+group :development, :test do
+  gem 'guard-rspec', require: false
+  gem "rspec-rails"
 end
 
 group :doc do
