@@ -20,6 +20,11 @@
   <p><strong>Title: </strong><%= question.title %></p>
   <p><strong>Subtext: </strong><%= question.subtext %></p>
   <p><strong>Required: </strong><%= question.required %></p>
+  <ul>
+    <% question.question_options.each do |option| %>
+        <li><%= option.text %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= link_to 'Edit', edit_questionnaire_path(@questionnaire) %> |

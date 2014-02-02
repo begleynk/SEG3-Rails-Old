@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :questionnaire
+  has_many :question_options
 
   @supported_types = ["Multiple Choice", "Scale", "Free Text"]
   
