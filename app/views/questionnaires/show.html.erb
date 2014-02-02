@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Questionnaire</h1>
-
-<p>
-  <strong>Title:</strong>
-  <%= @questionnaire.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @questionnaire.description %>
-</p>
-
-<br>
-
 <div class='row'>
-  <div class='col-md-12'>
-    <h3>Questions:</h3>
+  <div class='col-md-6'>
+    <h1><%= @questionnaire.title %></h1>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @questionnaire.description %>
+    </p>
+  </div>
+  <div class='col-md-6'>
   </div>
 </div>
+
+<br>
 
 <div id='questions-list'>
   <% @questionnaire.questions.each do |question| %>
